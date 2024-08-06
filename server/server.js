@@ -11,12 +11,12 @@ app.use(cors());
 const port=process.env.PORT || 4002;
 connectDB();
 connectCloudinary();
-//middlewares
+
 app.use(express.json());
 
 
 
-//initi routes
+
 app.use("/api/song",songRouter);
 app.use("/api/album",albumRouter);
 
