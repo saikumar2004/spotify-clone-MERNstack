@@ -58,7 +58,7 @@ const PlayerContextProvider=(props)=>{
     }
 const getSongsData=async()=>{
     try {
-        const response=await axios.get(`http://localhost:4002/api/song/list`);
+        const response=await axios.get(`https://spotify-server-jdth.onrender.com/api/song/list`);
          setSongsData(response.data.songs);
          setTrack(response.data.songs[0]);
          
@@ -68,7 +68,7 @@ const getSongsData=async()=>{
 }
 const getAlbumData=async()=>{
     try {
-        const response=await axios.get(`http://localhost:4002/api/album/list`);
+        const response=await axios.get(`https://spotify-server-jdth.onrender.com/api/album/list`);
         setAlbumsData(response.data.albums);
     } catch (error) {
         

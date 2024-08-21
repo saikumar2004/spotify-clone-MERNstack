@@ -5,9 +5,21 @@ import songRouter from './src/routes/songRoutes.js';
 import connectDB from './src/config/mongoDB.js';
 import connectCloudinary from './src/config/cloudnary.js';
 import albumRouter from './src/routes/albumRoutes.js';
+import  expressValidator from 'express-validator';
+
 
 const app=express();
-app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, access-control-allow-origin");
+    next();
+});
+const corsOptions = {
+    origin: '*'
+  }
+app.use(cors(corsOptions));
+app.use(expressValidator());
+
 const port=process.env.PORT || 4002;
 connectDB();
 connectCloudinary();

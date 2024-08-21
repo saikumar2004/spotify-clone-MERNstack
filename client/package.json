@@ -1,5 +1,5 @@
 {
-  "homepage": "https://saikumar2004.github.io/spotify-clone-MERNstack/client",
+  
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -43,5 +43,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.7"
-  }
+  },
+  "proxy": "https://spotify-server-jdth.onrender.com"
 }
