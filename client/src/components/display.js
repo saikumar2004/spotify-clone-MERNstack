@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import DisplayHome from './DisplayHome';
 import DisplayAlbum from './DisplayAlbum';
 import { PlayerContext } from '../context/PlayerContext';
+import Songslist from './songlist';
 
 function Display() {
   const { albumsData } = useContext(PlayerContext);
@@ -25,6 +26,7 @@ function Display() {
         ?
         <Routes>
           <Route path='/spotify-clone-MERNstack' element={<DisplayHome />} />
+          <Route path='/songslist' element={<Songslist/>} />
           <Route path='/album/:id' element={<DisplayAlbum album={albumsData.find((x) => (x._id == albumId))} />} />
         </Routes>
         : null
