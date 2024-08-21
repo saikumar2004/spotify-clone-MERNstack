@@ -74,7 +74,7 @@ const PlayerContextProvider = (props) => {
 
   const getSongsData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4006/api/song/list`);
+      const response = await axios.get(`https://spotify-clone-mernstack-1.onrender.com/api/song/list`);
       setSongsData(response.data.songs);
       setTrack(response.data.songs[0]);
     } catch (error) {
@@ -84,7 +84,7 @@ const PlayerContextProvider = (props) => {
 
   const getAlbumData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4006/api/album/list`);
+      const response = await axios.get(`https://spotify-clone-mernstack-1.onrender.com/api/album/list`);
       setAlbumsData(response.data.albums);
     } catch (error) {
       console.error("Error fetching album data:", error);
