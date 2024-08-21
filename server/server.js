@@ -5,7 +5,7 @@ import songRouter from './src/routes/songRoutes.js';
 import connectDB from './src/config/mongoDB.js';
 import connectCloudinary from './src/config/cloudnary.js';
 import albumRouter from './src/routes/albumRoutes.js';
-import  expressValidator from 'express-validator';
+import expressValidator from 'express-validator';
 
 
 const app=express();
