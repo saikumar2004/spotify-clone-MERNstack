@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/spotify-clone-MERNstack/client/static/css/main.f97d8bf9.css",
-    "main.js": "/spotify-clone-MERNstack/client/static/js/main.3fb51522.js",
-    "static/media/song2.mp3": "/spotify-clone-MERNstack/client/static/media/song2.094319c6a6cb9bf717d7.mp3",
-    "static/media/song3.mp3": "/spotify-clone-MERNstack/client/static/media/song3.780c4dfad32ecaf4e3ef.mp3",
-    "static/media/song1.mp3": "/spotify-clone-MERNstack/client/static/media/song1.0f48c2788ccdf3a2c0e9.mp3",
-    "static/media/img14.jpg": "/spotify-clone-MERNstack/client/static/media/img14.b46deb377189303a7351.jpg",
-    "static/media/img10.jpg": "/spotify-clone-MERNstack/client/static/media/img10.bac9694164a601fb4926.jpg",
-    "static/media/img16.jpg": "/spotify-clone-MERNstack/client/static/media/img16.740a13044ad52ee5cc79.jpg",
-    "static/media/img2.jpg": "/spotify-clone-MERNstack/client/static/media/img2.ba40edc721dd72d826e8.jpg",
-    "static/media/img4.jpg": "/spotify-clone-MERNstack/client/static/media/img4.ac9c78ba94d348f5cf56.jpg",
-    "static/media/img15.jpg": "/spotify-clone-MERNstack/client/static/media/img15.56317abebba893dbb126.jpg",
-    "static/media/img12.jpg": "/spotify-clone-MERNstack/client/static/media/img12.ba06d4c6ae2b80302433.jpg",
-    "static/media/img3.jpg": "/spotify-clone-MERNstack/client/static/media/img3.a9be7b865e5a65eea026.jpg",
-    "static/media/img5.jpg": "/spotify-clone-MERNstack/client/static/media/img5.3a7302df52da9425e43c.jpg",
-    "static/media/img11.jpg": "/spotify-clone-MERNstack/client/static/media/img11.b4899d0eb46a32545a7b.jpg",
-    "static/media/img9.jpg": "/spotify-clone-MERNstack/client/static/media/img9.ef9686312a7aad6fb6ba.jpg",
-    "static/media/img7.jpg": "/spotify-clone-MERNstack/client/static/media/img7.d5c48a67c531d5e04d0f.jpg",
-    "static/media/img8.jpg": "/spotify-clone-MERNstack/client/static/media/img8.84a719877c3acafe9abb.jpg",
-    "static/media/img1.jpg": "/spotify-clone-MERNstack/client/static/media/img1.f715083013430b7e457e.jpg",
-    "index.html": "/spotify-clone-MERNstack/client/index.html",
-    "main.f97d8bf9.css.map": "/spotify-clone-MERNstack/client/static/css/main.f97d8bf9.css.map",
-    "main.3fb51522.js.map": "/spotify-clone-MERNstack/client/static/js/main.3fb51522.js.map"
+    "main.css": "/static/css/main.f97d8bf9.css",
+    "main.js": "/static/js/main.3146a0cc.js",
+    "static/media/song2.mp3": "/static/media/song2.094319c6a6cb9bf717d7.mp3",
+    "static/media/song3.mp3": "/static/media/song3.780c4dfad32ecaf4e3ef.mp3",
+    "static/media/song1.mp3": "/static/media/song1.0f48c2788ccdf3a2c0e9.mp3",
+    "static/media/img14.jpg": "/static/media/img14.b46deb377189303a7351.jpg",
+    "static/media/img10.jpg": "/static/media/img10.bac9694164a601fb4926.jpg",
+    "static/media/img16.jpg": "/static/media/img16.740a13044ad52ee5cc79.jpg",
+    "static/media/img2.jpg": "/static/media/img2.ba40edc721dd72d826e8.jpg",
+    "static/media/img4.jpg": "/static/media/img4.ac9c78ba94d348f5cf56.jpg",
+    "static/media/img15.jpg": "/static/media/img15.56317abebba893dbb126.jpg",
+    "static/media/img12.jpg": "/static/media/img12.ba06d4c6ae2b80302433.jpg",
+    "static/media/img3.jpg": "/static/media/img3.a9be7b865e5a65eea026.jpg",
+    "static/media/img5.jpg": "/static/media/img5.3a7302df52da9425e43c.jpg",
+    "static/media/img11.jpg": "/static/media/img11.b4899d0eb46a32545a7b.jpg",
+    "static/media/img9.jpg": "/static/media/img9.ef9686312a7aad6fb6ba.jpg",
+    "static/media/img7.jpg": "/static/media/img7.d5c48a67c531d5e04d0f.jpg",
+    "static/media/img8.jpg": "/static/media/img8.84a719877c3acafe9abb.jpg",
+    "static/media/img1.jpg": "/static/media/img1.f715083013430b7e457e.jpg",
+    "index.html": "/index.html",
+    "main.f97d8bf9.css.map": "/static/css/main.f97d8bf9.css.map",
+    "main.3146a0cc.js.map": "/static/js/main.3146a0cc.js.map"
   },
   "entrypoints": [
     "static/css/main.f97d8bf9.css",
-    "static/js/main.3fb51522.js"
+    "static/js/main.3146a0cc.js"
   ]
 }
