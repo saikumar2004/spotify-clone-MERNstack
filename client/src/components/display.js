@@ -24,7 +24,7 @@ function Display() {
       {albumsData.length > 0
         ?
         <Routes>
-          <Route path='/' element={<DisplayHome />} />
+          <Route path='/spotify-clone-MERNstack' element={<DisplayHome />} />
           <Route path='/album/:id' element={<DisplayAlbum album={albumsData.find((x) => (x._id == albumId))} />} />
         </Routes>
         : null
