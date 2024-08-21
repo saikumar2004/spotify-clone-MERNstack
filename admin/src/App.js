@@ -8,7 +8,7 @@ import ListSong from './pages/ListSong';
 import ListAlbum from './pages/ListAlbum';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
-export const url='http://localhost:4002'
+export const url='https://spotify-clone-mernstack-1.onrender.com'
 function App() {
   return (
     <div className="flex items-start min-h-screen">
