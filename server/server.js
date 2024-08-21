@@ -5,7 +5,7 @@ import songRouter from './src/routes/songRoutes.js';
 // import connectDB from './src/config/mongoDB.js';
 import connectCloudinary from './src/config/cloudnary.js';
 import albumRouter from './src/routes/albumRoutes.js';
-import  mongoose from ('mongoose');
+import  mongoose from 'mongoose';
 
 
 const app=express();
