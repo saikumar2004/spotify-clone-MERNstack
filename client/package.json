@@ -43,6 +43,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.7"
-  },
-  "proxy": "https://spotify-server-jdth.onrender.com"
+  }
+  
 }
