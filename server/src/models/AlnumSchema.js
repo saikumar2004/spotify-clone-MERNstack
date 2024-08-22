@@ -6,5 +6,5 @@ const albumSchema=new mongoose.Schema({
     image:{type:String,required:true}
     
 })
-const albumModel=mongoose.models.album|| mongoose.model("album",albumSchema);
+const albumModel = mongoose.models.album|| mongoose.model("album",albumSchema);
 export default albumModel;
