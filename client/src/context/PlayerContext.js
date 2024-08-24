@@ -4,16 +4,13 @@ import axios from "axios";
 export const PlayerContext = createContext();
 
 const PlayerContextProvider = (props) => {
-  const audioRef = useRef();
-  const seekBg = useRef();
-  const seekBar = useRef();
-
-  // const url='https://spotify-clone-backend-1-qvgq.onrender.com/';
+  const audioRef = useRef(null);
+  const seekBg = useRef(null);
+  const seekBar = useRef(null);
 
   const [songsData, setSongsData] = useState([]);
   const [albumsData, setAlbumsData] = useState([]);
-
-  const [track, setTrack] = useState(songsData[0]);
+  const [track, setTrack] = useState(null);
   const [playStatus, setPlayStatus] = useState(false);
   const [time, setTime] = useState({
     currentTime: {
@@ -27,56 +24,70 @@ const PlayerContextProvider = (props) => {
   });
 
   function play() {
-    audioRef.current.play();
-    setPlayStatus(true);
+    if (audioRef.current) {
+      audioRef.current.play();
+      setPlayStatus(true);
+    }
   }
 
   function pause() {
-    audioRef.current.pause();
-    setPlayStatus(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setPlayStatus(false);
+    }
   }
 
   const playWithId = async (id) => {
-    songsData.forEach((item) => {
-      if (id === item._id) {
-        setTrack(item);
+    const selectedTrack = songsData.find((item) => item._id === id);
+    if (selectedTrack) {
+      setTrack(selectedTrack);
+      if (audioRef.current) {
+        await audioRef.current.play();
+        setPlayStatus(true);
       }
-    });
-    await audioRef.current.play();
-    setPlayStatus(true);
+    }
   };
 
   const previous = async () => {
-    songsData.forEach(async (item, index) => {
-      if (track._id === item._id && index > 0) {
-        await setTrack(songsData[index - 1]);
+    const currentIndex = songsData.findIndex((item) => item._id === track._id);
+    if (currentIndex > 0) {
+      setTrack(songsData[currentIndex - 1]);
+      if (audioRef.current) {
         await audioRef.current.play();
         setPlayStatus(true);
       }
-    });
+    }
   };
 
   const next = async () => {
-    songsData.forEach(async (item, index) => {
-      if (track._id === item._id && index < songsData.length - 1) {
-        await setTrack(songsData[index + 1]);
+    const currentIndex = songsData.findIndex((item) => item._id === track._id);
+    if (currentIndex < songsData.length - 1) {
+      setTrack(songsData[currentIndex + 1]);
+      if (audioRef.current) {
         await audioRef.current.play();
         setPlayStatus(true);
       }
-    });
+    }
   };
 
   const seeksong = async (e) => {
-    audioRef.current.currentTime =
-      (e.nativeEvent.offsetX / seekBg.current.offsetWidth) *
-      audioRef.current.duration;
+    if (audioRef.current && seekBg.current) {
+      audioRef.current.currentTime =
+        (e.nativeEvent.offsetX / seekBg.current.offsetWidth) *
+        audioRef.current.duration;
+    }
   };
 
   const getSongsData = async () => {
     try {
-      const response = await axios.get(`https://spotify-clone-mernstack-1.onrender.com/api/song/list`);
-      setSongsData(response.data.songs);
-      setTrack(response.data.songs[0]);
+      const response = await axios.get(
+        `https://spotify-clone-mernstack-1.onrender.com/api/song/list`
+      );
+      const songs = response.data.songs;
+      setSongsData(songs);
+      if (songs.length > 0) {
+        setTrack(songs[0]);
+      }
     } catch (error) {
       console.error("Error fetching songs data:", error);
     }
@@ -84,7 +95,9 @@ const PlayerContextProvider = (props) => {
 
   const getAlbumData = async () => {
     try {
-      const response = await axios.get(`https://spotify-clone-mernstack-1.onrender.com/api/album/list`);
+      const response = await axios.get(
+        `https://spotify-clone-mernstack-1.onrender.com/api/album/list`
+      );
       setAlbumsData(response.data.albums);
     } catch (error) {
       console.error("Error fetching album data:", error);
@@ -93,22 +106,27 @@ const PlayerContextProvider = (props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      audioRef.current.ontimeupdate = () => {
-        seekBar.current.style.width =
-          Math.floor(
-            (audioRef.current.currentTime / audioRef.current.duration) * 100
-          ) + "%";
-        setTime({
-          currentTime: {
-            second: Math.floor(audioRef.current.currentTime % 60),
-            minute: Math.floor(audioRef.current.currentTime / 60),
-          },
-          totalTime: {
-            second: Math.floor(audioRef.current.duration % 60),
-            minute: Math.floor(audioRef.current.duration / 60),
-          },
-        });
-      };
+      if (audioRef.current && seekBar.current) {
+        audioRef.current.ontimeupdate = () => {
+          if (audioRef.current.duration) {
+            seekBar.current.style.width =
+              Math.floor(
+                (audioRef.current.currentTime / audioRef.current.duration) *
+                  100
+              ) + "%";
+            setTime({
+              currentTime: {
+                second: Math.floor(audioRef.current.currentTime % 60),
+                minute: Math.floor(audioRef.current.currentTime / 60),
+              },
+              totalTime: {
+                second: Math.floor(audioRef.current.duration % 60),
+                minute: Math.floor(audioRef.current.duration / 60),
+              },
+            });
+          }
+        };
+      }
     }, 1000);
   }, [audioRef]);
 
