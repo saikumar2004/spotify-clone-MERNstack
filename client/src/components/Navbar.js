@@ -1,8 +1,9 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 function Navbar(){
     const navigate=useNavigate();
+    const location = useLocation();
   return (
     <>
       <div className='w-full flex justify-between items-center font-semibold '>
@@ -17,9 +18,24 @@ function Navbar(){
          </div>
       </div>
       <div className='flex items-center gap-2 mt-4'>
-         <p className='bg-white text-black px-4 py-1 rounded-2xl cursor-pointer' onClick={()=>navigate('/home')}>All</p>
-         <p className='bg-black px-4 py-1 rounded-2xl cursor-pointer' onClick={()=>navigate('/Songslist')}>Music</p>
-         <p className='bg-black px-4 py-1 rounded-2xl cursor-pointer' onClick={()=>navigate('/home')}>Podcasts</p>
+        <p 
+          className={`px-4 py-1 rounded-2xl cursor-pointer ${location.pathname === '/home' ? 'bg-white text-black' : 'bg-black text-white'}`} 
+          onClick={() => navigate('/home')}
+        >
+          All
+        </p>
+        <p 
+          className={`px-4 py-1 rounded-2xl cursor-pointer ${location.pathname === '/Songslist' ? 'bg-white text-black' : 'bg-black text-white'}`} 
+          onClick={() => navigate('/Songslist')}
+        >
+          Music
+        </p>
+        <p 
+          className={`px-4 py-1 rounded-2xl cursor-pointer ${location.pathname === '/' ? 'bg-white text-black' : 'bg-black text-white'}`} 
+          // onClick={() => navigate('/')}
+        >
+          Podcasts
+        </p>
       </div>
     </>
   );
