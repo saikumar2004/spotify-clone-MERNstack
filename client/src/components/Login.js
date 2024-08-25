@@ -58,7 +58,8 @@ function Login() {
   return (
     <section className="h-screen flex items-center justify-center bg-black">
       <form className="bg-gray-800 p-8 rounded shadow-md w-full max-w-md" onSubmit={handleSubmit}>
-        <h1 className="text-white text-3xl font-bold mb-6">Login to Spotify Clone</h1>
+        <img className=" rounded-full w-24 h-24 mx-auto mb-6"  src="https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_640.jpg" alt=""/>
+        <h1 className=" text-white text-3xl font-bold mb-6 text-center">Login in to Spotify</h1>
         <input
           className="w-full p-3 mb-4 bg-gray-700 text-white rounded"
           required
