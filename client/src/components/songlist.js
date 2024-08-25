@@ -10,7 +10,7 @@ function Songslist(){
       <Navbar/>
       <div className='mb-4'>
         <h1 className='my-5 font-bold text-2xl'>All Songs</h1>
-        <div className='grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-2 overflow-auto'>
+        <div className='grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-5 sm:gap-2 overflow-auto'>
               {songsData.map((item,index)=>(<SongItem key={index} name={item.name} desc={item.desc} id={item._id} image={item.image} />))} 
         </div>
       </div>
