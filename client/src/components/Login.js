@@ -1,81 +1,89 @@
-import {Link,useNavigate} from 'react-router-dom';
-import {useState,useContext} from 'react';
-import {UserContext} from '../context/UserContext';
-function Login(){
-  const loggedData=useContext(UserContext);
-    const navigate=useNavigate();
-    const[userCreds,setUserCreds]=useState({
-        email:"",
-        password:""
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+
+function Login() {
+  const loggedData = useContext(UserContext);
+  const navigate = useNavigate();
+  const [userCreds, setUserCreds] = useState({
+    email: "",
+    password: ""
+  });
+  const [message, setMessage] = useState({
+    type: "invisible-msg",
+    text: ""
+  });
+
+  function handleInput(event) {
+    setUserCreds((prevState) => {
+      return { ...prevState, [event.target.name]: event.target.value };
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    fetch("https://spotify-clone-mernstack-1.onrender.com/login", {
+      method: 'POST',
+      body: JSON.stringify(userCreds),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
-    const [message,setMessage]=useState({
-        type:"invisible-msg",
-        text:""
+    .then((response) => {
+      if (response.status === 404) {
+        setMessage({ type: "text-red-500", text: "Username or Email Doesn't Exist" });
+      } else if (response.status === 403) {
+        setMessage({ type: "text-red-500", text: "Incorrect Password" });
+      }
+
+      setTimeout(() => {
+        setMessage({ type: "invisible-msg", text: '' });
+      }, 5000);
+
+      return response.json();
     })
-    function handleInput(event){
-        setUserCreds((prevState)=>{
-      return {...prevState,[event.target.name]:event.target.value}
-        })
-    }
+    .then((data) => {
+      if (data.token !== undefined) {
+        localStorage.setItem("nutrify-user", JSON.stringify(data));
+        loggedData.setLoggedUser(data);
+        navigate("/home");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
-
-
-     function handleSubmit(event){
-        event.preventDefault();
-        
-        fetch("https://spotify-clone-mernstack-1.onrender.com/login",{
-            method:'POST',
-            body:JSON.stringify(userCreds),
-            headers:{
-                "Content-Type":"application/json"
-            }
-        })
-        .then((response)=>{
-              if(response.status===404){
-                setMessage({type:"error",text:"Username or Email Doesn't Exist"})
-              }
-              else if(response.status===403){
-                 setMessage({type:"error",text:"Incorrect Password"})
-              }
-             
-              
-              
-           
-              setTimeout(()=>{
-                setMessage({type:"invisible-msg",text:''})
-              },5000)
-
-
-              return response.json();
-        })
-        .then((data)=>{
-         
-            if(data.token!==undefined){
-                localStorage.setItem("nutrify-user",JSON.stringify(data));
-                loggedData.setLoggedUser(data);
-                 navigate("/home");
-            }
-            
-            
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-     }
-    return(
-      <section className="container">
-        <form className="form" onSubmit={handleSubmit}>
-            <h1>Login ToFitness</h1>
-           
-            <input className="inp" required onChange={handleInput} type="email" placeholder="Enter Email" name="email" value={userCreds.email}/>
-            <input className="inp" required maxLength="8" onChange={handleInput} type="password" placeholder="Enter password" name="password" value={userCreds.password}/>
-            <button className="btn">Login</button>
-            <p>Don't have an Account ? <Link to="/register">Register Now</Link></p>
-            <p className={message.type}>{message.text}</p>
-        </form>
-
-      </section>
-    )
-
+  return (
+    <section className="h-screen flex items-center justify-center bg-black">
+      <form className="bg-gray-800 p-8 rounded shadow-md w-full max-w-md" onSubmit={handleSubmit}>
+        <h1 className="text-white text-3xl font-bold mb-6">Login to Spotify Clone</h1>
+        <input
+          className="w-full p-3 mb-4 bg-gray-700 text-white rounded"
+          required
+          onChange={handleInput}
+          type="email"
+          placeholder="Enter Email"
+          name="email"
+          value={userCreds.email}
+        />
+        <input
+          className="w-full p-3 mb-4 bg-gray-700 text-white rounded"
+          required
+          maxLength="8"
+          onChange={handleInput}
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          value={userCreds.password}
+        />
+        <button className="w-full bg-green-600 p-3 text-white font-semibold rounded hover:bg-green-500 transition duration-200">Login</button>
+        <p className="text-gray-400 mt-4">Don't have an account? <Link to="/register" className="text-green-500 hover:underline">Register Now</Link></p>
+        <p className={`${message.type} mt-4`}>{message.text}</p>
+      </form>
+    </section>
+  );
 }
+
 export default Login;
