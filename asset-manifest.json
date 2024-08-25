@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/spotify-clone-MERNstack/static/css/main.b458bf16.css",
-    "main.js": "/spotify-clone-MERNstack/static/js/main.4acb5aae.js",
+    "main.css": "/spotify-clone-MERNstack/static/css/main.fb362762.css",
+    "main.js": "/spotify-clone-MERNstack/static/js/main.e9c3de0a.js",
     "static/media/song2.mp3": "/spotify-clone-MERNstack/static/media/song2.094319c6a6cb9bf717d7.mp3",
     "static/media/song3.mp3": "/spotify-clone-MERNstack/static/media/song3.780c4dfad32ecaf4e3ef.mp3",
     "static/media/song1.mp3": "/spotify-clone-MERNstack/static/media/song1.0f48c2788ccdf3a2c0e9.mp3",
@@ -20,11 +20,11 @@
     "static/media/img8.jpg": "/spotify-clone-MERNstack/static/media/img8.84a719877c3acafe9abb.jpg",
     "static/media/img1.jpg": "/spotify-clone-MERNstack/static/media/img1.f715083013430b7e457e.jpg",
     "index.html": "/spotify-clone-MERNstack/index.html",
-    "main.b458bf16.css.map": "/spotify-clone-MERNstack/static/css/main.b458bf16.css.map",
-    "main.4acb5aae.js.map": "/spotify-clone-MERNstack/static/js/main.4acb5aae.js.map"
+    "main.fb362762.css.map": "/spotify-clone-MERNstack/static/css/main.fb362762.css.map",
+    "main.e9c3de0a.js.map": "/spotify-clone-MERNstack/static/js/main.e9c3de0a.js.map"
   },
   "entrypoints": [
-    "static/css/main.b458bf16.css",
-    "static/js/main.4acb5aae.js"
+    "static/css/main.fb362762.css",
+    "static/js/main.e9c3de0a.js"
   ]
 }
