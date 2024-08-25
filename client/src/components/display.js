@@ -11,7 +11,7 @@ function Display() {
   const location = useLocation();
   const isAlbum = location.pathname.includes("album");
   const albumId = isAlbum ? location.pathname.split('/').pop() : "";
-  const bgColour = isAlbum && albumsData.length > 0 ? albumsData.find((x) => (x._id == albumId)).bgColor : "#121212"
+  const bgColour = isAlbum && albumsData.length > 0 ? albumsData.find((x) => (x._id === albumId)).bgColor : "#121212"
   useEffect(() => {
     if (isAlbum) {
       displayRef.current.style.background = `linear-gradient(${bgColour},#121212)`
@@ -27,7 +27,7 @@ function Display() {
         <Routes>
           <Route path='/home' element={<DisplayHome />} />
           <Route path='/songslist' element={<Songslist/>} />
-          <Route path='/album/:id' element={<DisplayAlbum album={albumsData.find((x) => (x._id == albumId))} />} />
+          <Route path='/album/:id' element={<DisplayAlbum album={albumsData.find((x) => (x._id === albumId))} />} />
         </Routes>
         : null
 

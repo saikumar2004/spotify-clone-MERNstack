@@ -14,7 +14,7 @@ function App() {
   // console.log(loggedUser);
     useEffect(()=>{
       console.log(loggedUser);
-    },[])
+    },[loggedUser])
   return (
     
     <div className="h-screen bg-black">

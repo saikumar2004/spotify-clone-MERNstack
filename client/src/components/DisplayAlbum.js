@@ -9,11 +9,11 @@ function  DisplayAlbum({album}){
     const {playWithId,albumsData,songsData}=useContext(PlayerContext);
     useEffect(()=>{
       albumsData.map((item)=>{
-        if(item._id==id){
+        if(item._id===id){
           setAlbumData(item);
         }
       })
-    },[])
+    },[albumsData, id])
   return albumData? (
     <>
       <Navbar/>
