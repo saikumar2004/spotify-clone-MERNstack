@@ -4,7 +4,8 @@ import DisplayHome from './DisplayHome';
 import DisplayAlbum from './DisplayAlbum';
 import { PlayerContext } from '../context/PlayerContext';
 import Songslist from './songlist';
-
+import Private from './Private'
+import NotFound from './NotFound';
 function Display() {
   const { albumsData } = useContext(PlayerContext);
   const displayRef = useRef();
@@ -25,10 +26,15 @@ function Display() {
       {albumsData.length > 0
         ?
         <Routes>
-          <Route path='/home' element={<DisplayHome />} />
-          <Route path='/songslist' element={<Songslist/>} />
-          <Route path='/album/:id' element={<DisplayAlbum album={albumsData.find((x) => (x._id === albumId))} />} />
+          {/* <Route path='/home' element={<DisplayHome />} /> */}
+          <Route path='/home' element={<Private  Component={DisplayHome} />} />
+    <Route path='/songslist' element={<Private Component={Songslist}/>} />
+    <Route path='/album/:id' element={<Private Component={<DisplayAlbum album={albumsData.find((x) => (x._id === albumId))}/>} />}  />
+<Route path='*' element={<NotFound/>}/>
+          {/* <Route path='/songslist' element={<Songslist/>} /> */}
+          {/* <Route path='/album/:id' element={<DisplayAlbum album={albumsData.find((x) => (x._id === albumId))} />} /> */}
         </Routes>
+
         : null
 
       }

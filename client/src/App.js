@@ -10,7 +10,7 @@ import { PlayerContext } from "./context/PlayerContext";
 
 function App() {
   const { audioRef, track, songsData } = useContext(PlayerContext);
-  const [loggedUser,setLoggedUser]=useState(JSON.parse(localStorage.getItem("nutrify-user")));
+  const [loggedUser,setLoggedUser]=useState(JSON.parse(localStorage.getItem("spotify-user")));
   // console.log(loggedUser);
     useEffect(()=>{
       console.log(loggedUser);
@@ -24,6 +24,7 @@ function App() {
       <Route path="/spotify-clone-MERNstack" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+       
         <Route
           path="/*"
           element={
@@ -38,6 +39,7 @@ function App() {
               : null
           }
         />
+        
       </Routes>
       <audio ref={audioRef} src={track ? track.file : ""} preload="auto"></audio>
       </UserContext.Provider>
